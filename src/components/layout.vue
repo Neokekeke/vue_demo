@@ -3,7 +3,9 @@
 
      <div class="app-head">
        <div class="head-inner">
-         <img src="../../src/assets/logo.png">
+         <div class="head-logo">
+          <img src="../../src/assets/logo.png">
+         </div>
          <div class="head-nav">
            <ul class="head-list">
              <li>登录</li>
@@ -17,9 +19,85 @@
        
      </div>
 
-     <div class="app-content">内容</div>
+     <div class="app-content">
 
-     <div class="app-foot">尾部</div>
+       <div class="container-left">
+          <div class="index-left">       
+             <!-- 左边的顶部 -->
+             <!-- 可以用template套着循环数据 -->
+            <div class="left-top">
+              <div class="banner">
+                <span>校招大厂列表</span>
+              </div>
+
+              <template v-for="listItem in productLists">
+                <div class="products">
+                  <h3 class="title">{{ listItem.title }}</h3>
+                  <ul v-for="items in listItem.lists">
+                    <li>
+                      <a :href="items.url">{{ items.name }}</a> 
+                      <span class="hotTitle" v-if="items.hot">Hot</span>
+                    </li>     
+                  </ul>
+                </div>
+                <span class="hr" v-if="!listItem.showHr"></span>    
+              </template>       
+
+            </div>
+
+            <!-- 左边的底部 -->
+            <div class="left-bottom">
+                <div class="banner">
+                  <span>最新校招信息</span>
+                </div>
+                <template v-for="newsItem in newLists">
+                  <div class="news">
+                    <ul>
+                      <li>
+                        <a :href="newsItem.url">{{newsItem.title}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                </template>
+            </div>           
+        </div> <!-- index-left -->
+       </div> <!-- container-left -->
+
+
+
+        <!-- 右边 -->
+        <div class="container-right">
+          <div class="index-right">
+
+            <!-- 幻灯片 -->
+            <div class="right-top">
+
+            </div>
+
+            <!-- 右下边的内容 -->
+            <div class="right-bottom">
+              
+              <template v-for="(lists,index) in borderLists" >
+                <div class="border-list" :class="[{'itemRight': index % 2 !== 0},lists.img]">
+                  <div class="border-items" >
+                      <div class="items-top">
+                        {{ lists.title }}
+                      </div>
+                      <div class="items-bottom">
+                       <a href=""></a>
+                      </div>
+                  </div>
+                </div>
+              </template>
+            
+            </div>
+
+          </div>
+        </div>
+
+     </div>
+
+     <div class="app-foot">CopyRight &nbsp; © &nbsp; Neokekeke</div>
 
  </div>
 </template>
@@ -29,7 +107,105 @@
  export default {
    data () {
      return {
-
+        productLists : [
+            {
+              title : '互联网大厂',
+              lists : [
+                {
+                  name : '百度',
+                  url : 'www:baidu.com', 
+                },
+                {
+                  name : '腾讯',
+                  url : 'www.qq.com',
+                  hot : true
+                },
+                {
+                  name : '网易',
+                  url : 'www.163.com',
+                  hot : true
+                },
+                {
+                  name : '阿里',
+                  url : 'www.taobao.com',
+                  hot : true
+                },
+                {
+                  name : '京东',
+                  url : 'www.jd.com',
+                }
+            
+              ],
+              showHr : false
+            },
+            {
+              title : '热门公司',
+              lists : [
+                {
+                  name : '唯品会',
+                  url : 'www:vip.com',
+                  hot : true 
+                },
+                {
+                  name : 'Bigo',
+                  url : 'www.yy.com' 
+                },
+                {
+                  name : '金山软件',
+                  url : 'www.kingsoft.com'
+                }
+              ],
+              showHr : true
+            }
+        ],
+        newLists: [
+          {
+            title : '春招校招简历模板',
+            url : 'http://mp.weixin.qq.com/s/ZknmJOb1N55RxyjaVZRQ5A'
+          },
+          {
+            title : '校招职位列表',
+            url : 'http://m.ciweishixi.com/jobsearch?s_c=2'
+          },
+          {
+            title : '春招企业时间表',
+            url : 'http://mp.weixin.qq.com/s/Qlccom-Ry-WoA_6XQjji6Q'
+          },
+          {
+            title : '求职攻略啦',
+            url : 'https://mp.weixin.qq.com/mp/homepage?__biz=MjM5Mjc4NzkyNw==&hid=11&sn=1e9e25493253bc886152d86fd1888b6d&scene=18&uin=&key=&devicetype=Windows+10&version=62060028&lang=zh_CN&ascene=7&winzoom=1.375'
+          },
+          {
+            title : '校招内推攻略',
+            url : 'https://mp.weixin.qq.com/mp/homepage?__biz=MzI4MDAzMzc4MA==&hid=4&sn=11119fe365dff0f1470bfaaeb09cabb6&scene=18&uin=&key=&devicetype=Windows+10&version=62060028&lang=zh_CN&ascene=7&winzoom=1.375'
+          },
+          {
+            title : '备战春招准备',
+            url : 'http://mp.weixin.qq.com/s/G7I_jnMqRHOalufoDlpSew'
+          }
+        ],
+        borderLists : [
+          {
+            title : '个人Github',
+            url : 'https://github.com/Neokekeke',
+            img : 'github'
+          },
+          {
+            title : '个人CSDN',
+            url : 'http://my.csdn.net/Neokekeke',
+            img : 'csdn'
+          },
+          {
+            title : '天猫商城',
+            url : 'www.tmall.com',
+            img : 'tmall'
+          },
+          {
+            title: '京东商城',
+            url : 'www.jd.com',
+            img : 'jd'
+          }
+        ] 
      }
    },
    components: {
@@ -40,6 +216,8 @@
    }
  }
 </script>
+
+
 
 <style>
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -95,12 +273,43 @@ a {
   text-decoration: none;
 }
 body {
-  background: #f0f2f5;
+  background: rgb(240, 242, 245);
   font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
   font-size: 14px;
   color: #444;
 }
 
+/* borderlists里面几个图片的样式 */
+.github,.csdn,.tmall,.jd{
+  width: 345px;
+  height: 100%;
+  opacity: 0.6;
+}
+.github{
+   background: url("../assets/1.jpg") center center no-repeat;
+}
+
+.csdn{
+  background: url("../assets/2.jpg") center center no-repeat;
+}
+
+.tmall{
+  background: url("../assets/3.jpg") center center no-repeat;
+}
+
+.jd{
+  background: url("../assets/4.jpg") center center no-repeat;
+}
+
+.github:hover , .csdn:hover , .tmall:hover , .jd:hover{
+  opacity: 1;
+  transition: 0.3s;
+  transform: scale(1.030);
+  color: #fff;
+}
+/* *********************** */
+
+/* 这里开始layout样式的设置 */
 .app-head{
   background: rgba(54, 54, 54, 1);
   width: 100%;
@@ -108,32 +317,203 @@ body {
 }
 
 .head-inner{
-  width: 1250px;
+  width: 1000px;
   height: 90px;
   margin: 0 auto;
+  position: relative;
 }
 
-.head-inner img{
+/* 顶部logo的样式 */
+.head-inner .head-logo{
   width: 50px;
   height: 50px;
-
-}
-
-.head-nav{
+  display: inline-block;
   position: absolute;
-  right: 320px;
+  top: 20px;
 }
 
-.head-list{
-  color: rgb(178, 178, 178);
+.head-logo img{
+  width: 100%;
+  height: 100%;
+}
+
+/* 顶部注册登录的样式 */
+.head-nav{
+  height: 30px;
+  position: absolute;
+  right: 0px;
+  top: 30px;
+}
+
+.head-list {
+  display: inline-block;
+  margin-top: 5px;
 }
 
 .head-list li{
+  color: rgb(178, 178, 178);
   float: left;
-  margin: 5px;
+  padding: 5px;
   cursor: pointer;
 }
 
+/* **************** */
+/* 中间content的样式 */
+.app-content{
+  width: 1000px;
+  margin: 25px auto; 
+  height: 750px;
+}
 
- 
+.container-left{
+  width: 270px;
+  margin: 0 15px 15px 15px;
+  float: left;
+}
+
+/* 左边导航样式 */
+.container-left .index-left .left-top ,.index-left .left-bottom{
+  width: 270px;
+  background-color: #fff;
+  box-shadow: 0 0 5px #ddd;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
+  padding-bottom: 10px; 
+}
+
+.hr{
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin: 15px 0 5px 0;
+}
+
+.index-left .left-top .banner{
+  width: 100%;
+  height: 35px;
+  background-color: rgb(79, 192, 141);
+}
+
+.left-top .banner span,.left-bottom .banner span{
+  line-height: 35px;
+  color: #fff;
+  font-size: 15px;
+  margin-left: 15px;
+}
+
+/* 左边底部的样式 */
+.container-left .index-left .left-bottom{
+  margin-top: 15px;
+  height: 300px;
+}
+
+.left-bottom .banner{
+  width: 100%;
+  height: 35px;
+  background-color: rgb(79, 192, 141);
+}
+
+.products{
+  margin-top: 15px;
+}
+
+.products h3{
+  font-size: 14px;
+  margin-left: 15px;
+  font-weight: bolder
+}
+
+.products ul{
+  display: block;
+  margin: 10px 0 10px 30px;
+}
+
+.hotTitle{
+  display: inline-block;
+  width: 25px;
+  text-align: center;
+  font-size: 12px;
+  background-color: orangered;
+  color: #fff;
+}
+
+.news{
+  margin-top: 15px;
+}
+
+.news ul{
+  margin: 0 30px;
+}
+
+/* 右边内容部分 */
+.app-content .container-right{
+  width: 700px;
+  height : 750px;
+  float: left;
+  margin: 0px 0 10px 0;
+}
+
+.index-right{
+  width: 100%;
+  height: 320px;
+}
+
+.index-right .right-top{
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+
+.index-right .right-bottom{
+  width: 100%;
+  height: 308px;
+  margin-top: 13px;
+}
+
+.border-list{
+  /* overflow: hidden; */
+  width: 345px;
+  height: 145px;
+  float: left;
+  background-color: #fff;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 0 5px #ddd;
+  text-align: center;
+  line-height: 145px;
+}
+
+.border-list .border-items{
+  width: 100%;
+  height: 100%;
+}
+
+.itemRight{
+  margin-right: 0;
+}
+
+.itemBottom{
+  margin-bottom: 0;
+}
+
+.items-left{
+
+}
+
+.items-right{
+
+}
+
+
+/* 底部 */
+.app-foot{
+  width: 100%;
+  height: 90px;
+  background-color: rgb(227, 228, 232);
+  text-align: center;
+  line-height: 90px;
+}
+
+
 </style>
