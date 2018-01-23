@@ -78,16 +78,15 @@
             <div class="right-bottom">
               
               <template v-for="(lists,index) in borderLists" >
+                <a :href="lists.url">
                 <div class="border-list" :class="[{'itemRight': index % 2 !== 0},lists.img]">
                   <div class="border-items" >
                       <div class="items-top">
-                        {{ lists.title }}
-                      </div>
-                      <div class="items-bottom">
-                       <a href=""></a>
-                      </div>
+                         {{ lists.title }}               
+                      </div>                    
                   </div>
                 </div>
+                </a>      
               </template>
             
             </div>
@@ -103,7 +102,6 @@
 </template>
 
 <script>
-
  export default {
    data () {
      return {
@@ -191,18 +189,18 @@
             img : 'github'
           },
           {
-            title : '个人CSDN',
+            title : '',
             url : 'http://my.csdn.net/Neokekeke',
             img : 'csdn'
           },
           {
-            title : '天猫商城',
-            url : 'www.tmall.com',
+            title : '',
+            url : 'https://www.tmall.com/',
             img : 'tmall'
           },
           {
-            title: '京东商城',
-            url : 'www.jd.com',
+            title: '',
+            url : 'https://www.jd.com/',
             img : 'jd'
           }
         ] 
@@ -212,7 +210,7 @@
 
    },
    methods: {
-       
+      
    }
  }
 </script>
@@ -303,7 +301,7 @@ body {
 
 .github:hover , .csdn:hover , .tmall:hover , .jd:hover{
   opacity: 1;
-  transition: 0.3s;
+  transition: 0.9s;
   transform: scale(1.030);
   color: #fff;
 }
@@ -491,6 +489,7 @@ body {
 
 .itemRight{
   margin-right: 0;
+  color: #000;
 }
 
 .itemBottom{
