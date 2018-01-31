@@ -1,6 +1,6 @@
-# vue_demo02
+# vue_recruit_demo
 
-> demo02
+> 类春招信息网站，学习了2.0的知识，收集了市面上开始春招的企业发布的春招信息
 
 ## Build Setup
 
