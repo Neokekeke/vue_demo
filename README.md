@@ -2,9 +2,12 @@
 
 > 类春招信息网站，学习了2.0的知识，收集了市面上开始春招的企业发布的春招信息
 
+
+![](https://raw.githubusercontent.com/Neokekeke/vue_recruit_demo/master/src/assets/web.png)
+
 ## Build Setup
 
-``` bash
+bash
 # install dependencies
 npm install
 
@@ -19,3 +22,4 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
