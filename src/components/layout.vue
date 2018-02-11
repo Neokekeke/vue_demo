@@ -71,7 +71,9 @@
 
             <!-- 幻灯片 -->
             <div class="right-top">
-               <Slider :sliderList="sliderList"></Slider>
+               <Slider :sliderList="sliderList"
+                       :intervalTime="intervalTime"
+               ></Slider>
             </div>
 
             <!-- 右下边的内容 -->
@@ -103,12 +105,10 @@
 
 <script>
  import axios from 'axios'
- import Swiper from '../components/swiper.vue'
  import Slider from '../components/slider.vue'
 
  export default {
   components:{
-    Swiper, //第三方轮播组件
     Slider,  //自己写的录播组件
   },
    data () {
@@ -117,6 +117,7 @@
         newLists : '',
         borderLists : '',
         sliderList : [], //轮播图
+        intervalTime : 2500, //图片切换时间
      }
    },
    methods: {
@@ -153,7 +154,6 @@
           (res)=>{
             console.log(res);
             this.sliderList = res.data.sliderList;
-            console.log(this.sliderList instanceof Array);
           }
         ).catch(
           (err)=>{

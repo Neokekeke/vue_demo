@@ -9,7 +9,7 @@ import axios from 'axios'
 import Mock from './mock/mock.js' 
 
 // 引入轮播图js
-import Swiper from './vue_swiper/swiper.js'
+//import Swiper from './vue_swiper/swiper.js'
 
 Vue.config.productionTip = false;
 
