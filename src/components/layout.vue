@@ -71,7 +71,7 @@
 
             <!-- 幻灯片 -->
             <div class="right-top">
-
+               <Slider :sliderList="sliderList"></Slider>
             </div>
 
             <!-- 右下边的内容 -->
@@ -103,17 +103,21 @@
 
 <script>
  import axios from 'axios'
+ import Swiper from '../components/swiper.vue'
+ import Slider from '../components/slider.vue'
 
  export default {
+  components:{
+    Swiper, //第三方轮播组件
+    Slider,  //自己写的录播组件
+  },
    data () {
      return {
         productLists : '',
         newLists : '',
-        borderLists : ''
+        borderLists : '',
+        sliderList : [], //轮播图
      }
-   },
-   components: {
-
    },
    methods: {
 
@@ -142,7 +146,20 @@
           this.borderLists = res.data.borderLists;
         }).catch((err)=>{
           console.log(err);
-        })
+        }),
+
+        //获取轮播图图片
+        axios.get('/getSlider').then(
+          (res)=>{
+            console.log(res);
+            this.sliderList = res.data.sliderList;
+            console.log(this.sliderList instanceof Array);
+          }
+        ).catch(
+          (err)=>{
+            console.log(err);
+          }
+        )
    }
  }
 </script>
@@ -233,9 +250,8 @@ body {
 
 .github:hover , .csdn:hover , .tmall:hover , .jd:hover{
   opacity: 1;
-  transition: 0.9s;
-  transform: scale(1.030);
   color: #fff;
+      transform: scale(1.030);
 }
 /* *********************** */
 
@@ -391,7 +407,6 @@ body {
 .index-right .right-top{
   width: 100%;
   height: 100%;
-  background-color: red;
 }
 
 .index-right .right-bottom{
@@ -412,6 +427,7 @@ body {
   box-shadow: 0 0 5px #ddd;
   text-align: center;
   line-height: 145px;
+  transition: 0.9s;
 }
 
 .border-list .border-items{

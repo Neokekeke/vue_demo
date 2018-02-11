@@ -71,7 +71,7 @@
 
             <!-- 幻灯片 -->
             <div class="right-top">
-
+              <Swiper></Swiper>
             </div>
 
             <!-- 右下边的内容 -->
@@ -103,8 +103,13 @@
 
 <script>
  import axios from 'axios'
+ import Swiper from '../components/swiper.vue'
+
 
  export default {
+   components :{
+     Swiper
+   },
    data () {
      return {
         productLists : '',
@@ -391,7 +396,6 @@ body {
 .index-right .right-top{
   width: 100%;
   height: 100%;
-  background-color: red;
 }
 
 .index-right .right-bottom{

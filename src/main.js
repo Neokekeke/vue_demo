@@ -6,7 +6,10 @@ import router from './router'
 import axios from 'axios'
 
 // 注意一定要在main里面引入mock不然没法获得模拟数据
-import Mock from './mock/mock' 
+import Mock from './mock/mock.js' 
+
+// 引入轮播图js
+import Swiper from './vue_swiper/swiper.js'
 
 Vue.config.productionTip = false;
 

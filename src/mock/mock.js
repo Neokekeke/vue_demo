@@ -53,7 +53,7 @@ Mock.mock(/getCompany/,{
               showHr : true
             }
         ]
-    })
+})
 
 Mock.mock(/getNews/,{
         newLists: [
@@ -82,7 +82,7 @@ Mock.mock(/getNews/,{
               url : 'http://mp.weixin.qq.com/s/G7I_jnMqRHOalufoDlpSew'
             }
           ]
-    })
+})
 
 Mock.mock(/getBorders/,{
         borderLists : [
@@ -107,9 +107,36 @@ Mock.mock(/getBorders/,{
               img : 'jd'
             }
           ]
-    })
+})
 
-
+Mock.mock(/getSlider/,{
+        sliderList : [
+          {
+            title : 'vue',
+            imgSrc : require('../assets/sliders/vue.jpg'), //这里用require写法，webpack打包是才能识别
+          },
+          {
+            title : 'angular',
+            imgSrc : require('../assets/sliders/ng.png'), //这里用require写法，webpack打包是才能识别
+          },
+          {
+            title : 'react',
+            imgSrc : require('../assets/sliders/react.jpg'), //这里用require写法，webpack打包是才能识别
+          },
+          {
+            title : 'js',
+            imgSrc : require('../assets/sliders/js.jpg'), //这里用require写法，webpack打包是才能识别
+          },
+          {
+            title : 'webpack',
+            imgSrc : require('../assets/sliders/webpack.png'), //这里用require写法，webpack打包是才能识别
+          },
+          {
+            title : '超级马里奥',
+            imgSrc : require('../assets/sliders/mario.jpg')
+          }
+      ]
+})
 
 
 
